@@ -127,6 +127,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#e75480]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative z-10 flex flex-col h-full">
                       <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">บัตร น้ำแข็ง ทิพวรรณ</h4>
+                      <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 27 มิถุนายน 2568</p>
                       <div className="space-y-4">
                         <div>
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,500 บาท</p>
@@ -190,6 +191,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#e75480]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative z-10 flex flex-col h-full">
                       <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">จอดโต๊ะ เวียง นฤมล</h4>
+                      <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 12 กรกฎาคม 2568</p>
                       <div className="space-y-4">
                         <div>
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,200 บาท</p>
@@ -236,6 +238,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-br from-[#e75480]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative z-10 flex flex-col h-full">
                       <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">บัตร วงไม้เลื้อย</h4>
+                      <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 16 สิงหาคม 2568</p>
                       <div className="space-y-4">
                         <div>
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
