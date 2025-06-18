@@ -4,6 +4,10 @@ import { supabase } from '@/lib/supabase';
 
 const prisma = new PrismaClient();
 
+function sanitizeFileName(name: string) {
+  return name.replace(/[^a-zA-Z0-9._-]/g, '_');
+}
+
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
@@ -27,7 +31,8 @@ export async function POST(req: NextRequest) {
     }
 
     // อัปโหลดไฟล์สลิปเข้า Supabase Storage
-    const fileName = `${Date.now()}_${slip.name.replace(/\s/g, '_')}`;
+    const safeName = sanitizeFileName(slip.name);
+    const fileName = `${Date.now()}_${safeName}`;
     const { data, error } = await supabase.storage
       .from('slsfest-slip')
       .upload(`slips/${fileName}`, slip, {

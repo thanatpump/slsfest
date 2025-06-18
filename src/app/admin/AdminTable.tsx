@@ -14,6 +14,12 @@ interface Booking {
   status: string;
 }
 
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://vzesousztjhoymntujtq.supabase.co';
+function getSlipUrl(path: string) {
+  if (!path) return '';
+  return `${SUPABASE_URL}/storage/v1/object/public/slsfest-slip/${path}`;
+}
+
 export default function AdminTable() {
   const [bookings, setBookings] = useState<Booking[]>([]);
   const [loading, setLoading] = useState(true);
@@ -117,14 +123,14 @@ export default function AdminTable() {
                   <td className="p-2">{new Date(b.createdAt).toLocaleString()}</td>
                   <td className="p-2">
                     {b.paymentSlip ? (
-                      <button onClick={() => { setModalImage(b.paymentSlip!); setModalOpen(true); }} className="focus:outline-none">
-                      <Image 
-                        src={b.paymentSlip || ''} 
-                        alt="Payment Slip" 
-                        width={120} 
-                        height={120}
+                      <button onClick={() => { setModalImage(getSlipUrl(b.paymentSlip!)); setModalOpen(true); }} className="focus:outline-none">
+                        <Image 
+                          src={getSlipUrl(b.paymentSlip) || ''} 
+                          alt="Payment Slip" 
+                          width={120} 
+                          height={120}
                           className="rounded-lg shadow-md border border-blue-200 hover:scale-105 transition-transform"
-                      />
+                        />
                       </button>
                     ) : (
                       <span className="text-gray-400">-</span>
