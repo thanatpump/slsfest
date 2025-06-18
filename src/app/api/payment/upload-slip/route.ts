@@ -2,26 +2,33 @@ import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
+import { supabase } from '@/lib/supabase';
 
 const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    const slip = formData.get('slip') as File | null;
+    const file = formData.get('slip') as File;
     const bookingIds = (formData.get('bookingIds') as string || '').split(',').map(id => Number(id)).filter(Boolean);
 
-    if (!slip || bookingIds.length === 0) {
+    if (!file || bookingIds.length === 0) {
       return NextResponse.json({ error: 'ข้อมูลไม่ครบถ้วน' }, { status: 400 });
     }
 
-    const buffer = Buffer.from(await slip.arrayBuffer());
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-    await mkdir(uploadDir, { recursive: true });
-    const fileName = `${Date.now()}_${slip.name.replace(/\s/g, '_')}`;
-    const filePath = path.join(uploadDir, fileName);
-    await writeFile(filePath, buffer);
-    const slipPath = `/uploads/${fileName}`;
+    const fileName = `${Date.now()}_${file.name.replace(/\s/g, '_')}`;
+    const { data, error } = await supabase.storage
+      .from('slsfest-slip')
+      .upload(`slips/${fileName}`, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    const slipPath = data.path;
 
     // อัปเดต booking ทุกตัว
     await prisma.booking.updateMany({
