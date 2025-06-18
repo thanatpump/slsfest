@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
 import { supabase } from '@/lib/supabase';
 
 const prisma = new PrismaClient();
