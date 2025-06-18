@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { supabase } from '@/lib/supabase';
 
 const prisma = new PrismaClient();
 
@@ -27,17 +26,18 @@ export async function POST(req: NextRequest) {
       const artist = formData.get('artist') as string;
       let slipPath = null;
       if (slip) {
-        const buffer = Buffer.from(await slip.arrayBuffer());
-        const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-        try {
-          await mkdir(uploadDir, { recursive: true });
-        } catch (err) {
-          if ((err as NodeJS.ErrnoException).code !== 'EEXIST') throw err;
-        }
+        // อัปโหลดเข้า Supabase Storage
         const fileName = `${Date.now()}_${slip.name.replace(/\s/g, '_')}`;
-        const filePath = path.join(uploadDir, fileName);
-        await writeFile(filePath, buffer);
-        slipPath = `/uploads/${fileName}`;
+        const { data, error } = await supabase.storage
+          .from('slsfest-slip')
+          .upload(`slips/${fileName}`, slip, {
+            cacheControl: '3600',
+            upsert: false
+          });
+        if (error) {
+          return NextResponse.json({ error: 'อัปโหลดสลิปไม่สำเร็จ', detail: error.message }, { status: 500 });
+        }
+        slipPath = data.path;
       }
       // ตรวจสอบว่าที่นั่งยังว่างอยู่ + อัปเดตสถานะใน transaction
       const seatIds = seats.map(s => s.id);
