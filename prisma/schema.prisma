@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Seat {
+  id        String   @id @unique
+  zone      String
+  rowLabel  String
+  number    Int
+  status    String   // available, reserved, occupied
+  price     Int
+  artist    String
+  bookings  Booking[]
+  @@map("seats")
+}
+
+model Booking {
+  id           Int      @id @default(autoincrement())
+  seatId       String
+  seat         Seat     @relation(fields: [seatId], references: [id])
+  firstName    String
+  lastName     String
+  phone        String
+  email        String
+  createdAt    DateTime @default(now())
+  paymentSlip  String?  // path รูปสลิป
+  status       String   @default("pending") // waiting_payment, pending, approved, rejected
+  artist       String
+  @@map("bookings")
+}

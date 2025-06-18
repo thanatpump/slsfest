@@ -1,0 +1,63 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client';
+import { writeFile, mkdir } from 'fs/promises';
+import path from 'path';
+
+const prisma = new PrismaClient();
+
+export async function POST(req: NextRequest) {
+  try {
+    const formData = await req.formData();
+    const email = formData.get('email') as string;
+    const slip = formData.get('slip') as File | null;
+
+    if (!email || !slip) {
+      return NextResponse.json({ error: 'กรุณาระบุอีเมลและไฟล์สลิป' }, { status: 400 });
+    }
+
+    // ตรวจสอบว่ามีการจองที่รอสลิปหรือไม่
+    const bookings = await prisma.booking.findMany({
+      where: { 
+        email,
+        status: 'waiting_payment'
+      }
+    });
+
+    if (!bookings || bookings.length === 0) {
+      return NextResponse.json({ error: 'ไม่พบการจองที่รอสลิป' }, { status: 404 });
+    }
+
+    // อัปโหลดไฟล์สลิป
+    const buffer = Buffer.from(await slip.arrayBuffer());
+    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    try {
+      await mkdir(uploadDir, { recursive: true });
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code !== 'EEXIST') throw err;
+    }
+    const fileName = `${Date.now()}_${slip.name.replace(/\s/g, '_')}`;
+    const filePath = path.join(uploadDir, fileName);
+    await writeFile(filePath, buffer);
+    const slipPath = `/uploads/${fileName}`;
+
+    // อัปเดตสถานะและสลิปในฐานข้อมูล
+    await prisma.$transaction(
+      bookings.map(booking =>
+        prisma.booking.update({
+          where: { id: booking.id },
+          data: {
+            paymentSlip: slipPath,
+            status: 'pending'
+          }
+        })
+      )
+    );
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('API /api/upload-slip error:', error);
+    return NextResponse.json({ error: 'เกิดข้อผิดพลาด', detail: String(error) }, { status: 500 });
+  } finally {
+    await prisma.$disconnect();
+  }
+} 
