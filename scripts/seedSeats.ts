@@ -28,25 +28,25 @@ async function main() {
 
   for (const artistObj of artists) {
     const { name: artist, price } = artistObj;
-    for (let rowIdx = 0; rowIdx < seatRows.length; rowIdx++) {
-      const rowArr = seatRows[rowIdx];
+  for (let rowIdx = 0; rowIdx < seatRows.length; rowIdx++) {
+    const rowArr = seatRows[rowIdx];
       const rowLabel = String.fromCharCode(65 + rowIdx);
       // indoor: A-M (0-12), outdoor: N-R (13-17)
       const zone = rowIdx <= 12 ? 'indoor' : 'outdoor';
-      for (let colIdx = 0; colIdx < rowArr.length; colIdx++) {
-        const seatId = rowArr[colIdx];
-        if (!seatId) continue;
-        await prisma.seat.create({
-          data: {
+    for (let colIdx = 0; colIdx < rowArr.length; colIdx++) {
+      const seatId = rowArr[colIdx];
+      if (!seatId) continue;
+      await prisma.seat.create({
+        data: {
             id: `${seatId}_${artist}`,
             rowLabel,
-            number: parseInt(seatId.slice(1)),
-            status: 'available',
+          number: parseInt(seatId.slice(1)),
+          status: 'available',
             zone,
             price: price[zone],
             artist,
-          },
-        });
+        },
+      });
       }
     }
   }

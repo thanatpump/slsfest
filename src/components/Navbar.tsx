@@ -21,12 +21,13 @@ export default function Navbar() {
         {/* กลาง */}
         <div className="flex-1 flex justify-center relative z-20">
           <Image
-            src="/logo.png"
+            src="/logo.png?v=1"
             alt="SLS Logo"
             width={300}
             height={300}
             className="h-0 w-auto mt-4 md:h-40 md:mt-8 mx-auto drop-shadow-xl"
             priority
+            unoptimized
           />
         </div>
         {/* ขวา */}
@@ -47,12 +48,13 @@ export default function Navbar() {
         </svg>
       </button>
         <Image
-          src="/logo.png"
+          src="/logo.png?v=1"
           alt="SLS Logo"
           width={180}
           height={180}
           className="h-28 w-auto mt-4 mx-auto drop-shadow-xl"
           priority
+          unoptimized
         />
       </div>
       {/* Mobile Dropdown */}

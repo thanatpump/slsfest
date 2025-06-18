@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback, Suspense } from 'react';
+import Image from 'next/image';
 import SeatMap from '@/components/SeatMap';
 import { Seat as SeatType } from '@/types/seat';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -217,7 +218,7 @@ function SeatContent() {
                     className="mt-1 block w-full rounded-xl border-[#e75480] shadow-sm focus:border-[#e75480] focus:ring-[#e75480] px-4 py-3 text-lg text-black"
                     value={formData.lastName}
                     onChange={e => setFormData(prev => ({ ...prev, lastName: e.target.value }))}
-                  />
+          />
                 </div>
                 <div>
                   <label className="block text-lg font-medium text-[#e75480]">เบอร์โทรศัพท์</label>
@@ -299,7 +300,7 @@ function SeatContent() {
                 <div className="flex space-x-6">
                   <a 
                     href="https://www.facebook.com/majeeder555" 
-                    target="_blank"
+                    target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center space-x-2 hover:text-[#e75480] transition-colors group"
                   >
@@ -308,11 +309,18 @@ function SeatContent() {
                   </a>
                   <a 
                     href="https://line.me/ti/p/-kF-LaE42G" 
-                    target="_blank"
+                    target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 hover:text-[#e75480] transition-colors group"
+                    className="flex flex-col items-center space-y-2"
                   >
-                    <span className="text-2xl group-hover:scale-110 transition-transform">💬</span>
+                    <Image
+                      src="/line-footer.jpg?v=1"
+                      alt="Line QR Code"
+                      width={100}
+                      height={100}
+                      className="rounded-lg"
+                      unoptimized
+                    />
                     <span>Line</span>
                   </a>
                 </div>

@@ -34,15 +34,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[600px] md:h-[900px] flex flex-col justify-start items-center p-0 m-0 bg-gradient-to-b from-[#e6ffec] via-[#ffe6f7] to-[#e6ffec]">
         <div className="absolute inset-0">
-          <Image
-            src="/concert-bg.png"
+        <Image
+            src="/concert-bg.png?v=1"
             alt="Concert Background"
             fill
             className="object-center object-cover opacity-95"
             sizes="100vw"
             quality={90}
             priority
-          />
+            unoptimized
+        />
           <div className="absolute inset-0 bg-white/30" />
         </div>
         
@@ -53,23 +54,24 @@ export default function Home() {
           variants={containerVariants}
         >
           <div className="flex items-center justify-center h-full w-full mt-4 md:mt-[-60px]">
-            <Image
-              src="/sls-cel.png"
+                <Image
+              src="/sls-cel.png?v=1"
               alt="SLS Cel Logo"
-              width={2000}
-              height={2000}
-              className="object-contain w-full h-full max-w-[100vw] max-h-[70vh]"
-              priority
-            />
-          </div>
+              width={3000}
+              height={3000}
+              className="object-contain w-full h-full max-w-[100vw] max-h-[85vh]"
+                  priority
+                  unoptimized
+                />
+              </div>
           <motion.div variants={itemVariants} className="relative z-10 flex justify-center w-full max-w-2xl mx-auto mt-8">
-            <Link 
+                <Link 
               href="/select-artist"
               className="inline-block w-auto bg-[#00b894] hover:bg-[#43e97b] text-white font-bold py-2 md:py-4 px-4 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-[#00c6fb]"
-            >
-              จองตั๋ว
-            </Link>
-          </motion.div>
+                >
+                  จองตั๋ว
+                </Link>
+            </motion.div>
         </motion.div>
       </section>
 
@@ -193,37 +195,37 @@ export default function Home() {
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,200 บาท</p>
                           <p className="text-sm text-gray-600 mb-2">โซน Indoor</p>
                           <ul className="text-gray-800 space-y-1">
-                            <li className="flex items-center gap-2">
+                        <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              สำหรับ 4 ท่าน
-                            </li>
-                            <li className="flex items-center gap-2">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                          สำหรับ 4 ท่าน
+                        </li>
+                        <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              เบียร์สด 1 ทาวเวอร์
-                            </li>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                          เบียร์สด 1 ทาวเวอร์
+                        </li>
                           </ul>
                         </div>
                         <div>
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
                           <p className="text-sm text-gray-600 mb-2">โซน Outdoor</p>
                           <ul className="text-gray-800 space-y-1">
-                            <li className="flex items-center gap-2">
+                        <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
                               สำหรับ 4 ท่าน
-                            </li>
-                            <li className="flex items-center gap-2">
+                        </li>
+                        <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
                               เบียร์สด 1 ทาวเวอร์
-                            </li>
-                          </ul>
+                        </li>
+                      </ul>
                         </div>
                       </div>
                     </div>
@@ -257,18 +259,18 @@ export default function Home() {
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">800 บาท</p>
                           <p className="text-sm text-gray-600 mb-2">โซน Outdoor</p>
                           <ul className="text-gray-800 space-y-1">
-                            <li className="flex items-center gap-2">
+                        <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              สำหรับ 4 ท่าน
-                            </li>
-                            <li className="flex items-center gap-2">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                          สำหรับ 4 ท่าน
+                        </li>
+                        <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              เบียร์สด 1 ทาวเวอร์
-                            </li>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
+                          เบียร์สด 1 ทาวเวอร์
+                        </li>
                           </ul>
                         </div>
                         <div>
@@ -280,13 +282,13 @@ export default function Home() {
                               </svg>
                               บัตรสำหรับ 1 ท่าน
                             </li>
-                            <li className="flex items-center gap-2">
+                        <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                          </svg>
                               เบียร์ 1 กระป๋องใหญ่
-                            </li>
-                          </ul>
+                        </li>
+                      </ul>
                         </div>
                       </div>
                     </div>
@@ -331,9 +333,16 @@ export default function Home() {
                     href="https://line.me/ti/p/-kF-LaE42G" 
           target="_blank"
           rel="noopener noreferrer"
-                    className="flex items-center space-x-2 hover:text-[#e75480] transition-colors group"
+                    className="flex flex-col items-center space-y-2"
                   >
-                    <span className="text-2xl group-hover:scale-110 transition-transform">💬</span>
+                    <Image
+                      src="/line-footer.jpg?v=1"
+                      alt="Line QR Code"
+                      width={100}
+                      height={100}
+                      className="rounded-lg"
+                      unoptimized
+                    />
                     <span>Line</span>
                   </a>
                 </div>
