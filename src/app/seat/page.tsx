@@ -51,20 +51,24 @@ function SeatContent() {
       const data = await res.json();
       if (data.error) {
         setError(data.error);
-        return;
+        setLayout({ zones: [], rows: 0, seatsPerRow: 0, seats: [] });
+      } else {
+        const seats = data.seats.map((s: SeatType) => ({
+          ...s,
+          rowLabel: s.rowLabel ? s.rowLabel.toUpperCase() : '',
+          zone: s.zone || (s.rowLabel && s.rowLabel.charCodeAt(0) <= 74 ? 'VIP' : 'ธรรมดา'),
+        }));
+
+        setLayout({
+          zones: Array.from(new Set(seats.map((s: SeatType) => s.zone))),
+          rows: seats.length > 0 ? Math.max(...seats.map((s: SeatType) => s.rowLabel.charCodeAt(0))) - Math.min(...seats.map((s: SeatType) => s.rowLabel.charCodeAt(0))) + 1 : 0,
+          seatsPerRow: seats.length > 0 ? Math.max(...seats.map((s: SeatType) => s.number)) : 0,
+          seats
+        });
       }
-      const seats = data.seats.map((s: SeatType) => ({
-        ...s,
-        rowLabel: s.rowLabel ? s.rowLabel.toUpperCase() : '',
-        zone: s.zone || (s.rowLabel && s.rowLabel.charCodeAt(0) <= 74 ? 'VIP' : 'ธรรมดา'),
-      }));
-      setLayout(prev => ({
-        ...prev,
-        seats
-      }));
-    } catch (error) {
-      console.error("Error fetching seats:", error);
+    } catch {
       setError("เกิดข้อผิดพลาดในการโหลดข้อมูลที่นั่ง");
+      setLayout({ zones: [], rows: 0, seatsPerRow: 0, seats: [] });
     }
   }, [artist]);
 
@@ -134,8 +138,7 @@ function SeatContent() {
       setSlip(null);
       if (fileInputRef.current) fileInputRef.current.value = '';
       await fetchSeats();
-    } catch (err) {
-      console.error("Error submitting booking:", err);
+    } catch {
       setError("เกิดข้อผิดพลาดในการจอง");
     }
   };
@@ -218,7 +221,7 @@ function SeatContent() {
                     className="mt-1 block w-full rounded-xl border-[#e75480] shadow-sm focus:border-[#e75480] focus:ring-[#e75480] px-4 py-3 text-lg text-black"
                     value={formData.lastName}
                     onChange={e => setFormData(prev => ({ ...prev, lastName: e.target.value }))}
-          />
+                  />
                 </div>
                 <div>
                   <label className="block text-lg font-medium text-[#e75480]">เบอร์โทรศัพท์</label>

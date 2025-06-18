@@ -7,6 +7,7 @@ interface SeatMapProps {
   onSeatSelect: (seat: Seat) => void;
   selectedSeats?: Seat[];
   adminMode?: boolean;
+  artist?: string;
 }
 
 // seatRows ใหม่
@@ -22,9 +23,10 @@ const seatRows = [
   ),
 ];
 
-export default function SeatMap({ layout, onSeatSelect, selectedSeats = [], adminMode = false }: SeatMapProps) {
+export default function SeatMap({ layout, onSeatSelect, selectedSeats = [], adminMode = false, artist }: SeatMapProps) {
   const searchParams = useSearchParams();
-  const artist = searchParams.get('artist') || '';
+  const urlArtist = searchParams.get('artist') || '';
+  const currentArtist = artist || urlArtist;
 
   if (!layout.seats || !Array.isArray(layout.seats) || layout.seats.length === 0) {
     return <div className="text-center text-gray-500">ไม่มีข้อมูลที่นั่ง</div>;
@@ -99,7 +101,7 @@ export default function SeatMap({ layout, onSeatSelect, selectedSeats = [], admi
                 {row.map((seatId, colIdx) =>
                   seatId ? (
                     (() => {
-                      const seat = layout.seats.find(s => s.id === `${seatId}_${artist}`);
+                      const seat = layout.seats.find(s => s.id === `${seatId}_${currentArtist}`);
                       if (!seat) return <div key={colIdx} className="h-4 w-6 md:h-7 md:w-14" />;
                       const isSelected = selectedSeats.some(s => s.id === seat.id);
                       return (
@@ -152,7 +154,7 @@ export default function SeatMap({ layout, onSeatSelect, selectedSeats = [], admi
                 {row.map((seatId, colIdx) =>
                   seatId ? (
                     (() => {
-                      const seat = layout.seats.find(s => s.id === `${seatId}_${artist}`);
+                      const seat = layout.seats.find(s => s.id === `${seatId}_${currentArtist}`);
                       if (!seat) return <div key={colIdx} className="h-4 w-4 md:h-7 md:w-7" />;
                       const isSelected = selectedSeats.some(s => s.id === seat.id);
                       return (

@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const artists = [
-  { name: 'namkang', image: '/Card01_0.jpg' },
-  { name: 'viang', image: '/Card02_0.jpg' },
-  { name: 'naruto', image: '/Card03_0.jpg' },
+  { name: 'น้ำแข็ง ทิพวรรณ', image: '/Card01_0.jpg' },
+  { name: 'เวียง นฤมล', image: '/Card02_0.jpg' },
+  { name: 'วงไม้เลื้อย', image: '/Card03_0.jpg' },
 ];
 
 export default function SelectArtistPage() {

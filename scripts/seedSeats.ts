@@ -1,10 +1,11 @@
 import { PrismaClient } from '@prisma/client';
+
 const prisma = new PrismaClient();
 
 const artists = [
-  { name: 'namkang', price: { indoor: 1500, outdoor: 1200 } },
-  { name: 'viang', price: { indoor: 1200, outdoor: 1000 } },
-  { name: 'naruto', price: { indoor: 1000, outdoor: 800 } },
+  { name: 'น้ำแข็ง ทิพวรรณ', price: { indoor: 1500, outdoor: 1200 } },
+  { name: 'เวียง นฤมล', price: { indoor: 1200, outdoor: 1000 } },
+  { name: 'วงไม้เลื้อย', price: { indoor: 1000, outdoor: 800 } },
 ];
 
 const seatRows = [
@@ -28,25 +29,25 @@ async function main() {
 
   for (const artistObj of artists) {
     const { name: artist, price } = artistObj;
-  for (let rowIdx = 0; rowIdx < seatRows.length; rowIdx++) {
-    const rowArr = seatRows[rowIdx];
+    for (let rowIdx = 0; rowIdx < seatRows.length; rowIdx++) {
+      const rowArr = seatRows[rowIdx];
       const rowLabel = String.fromCharCode(65 + rowIdx);
       // indoor: A-M (0-12), outdoor: N-R (13-17)
       const zone = rowIdx <= 12 ? 'indoor' : 'outdoor';
-    for (let colIdx = 0; colIdx < rowArr.length; colIdx++) {
-      const seatId = rowArr[colIdx];
-      if (!seatId) continue;
-      await prisma.seat.create({
-        data: {
+      for (let colIdx = 0; colIdx < rowArr.length; colIdx++) {
+        const seatId = rowArr[colIdx];
+        if (!seatId) continue;
+        await prisma.seat.create({
+          data: {
             id: `${seatId}_${artist}`,
             rowLabel,
-          number: parseInt(seatId.slice(1)),
-          status: 'available',
+            number: parseInt(seatId.slice(1)),
+            status: 'available',
             zone,
             price: price[zone],
             artist,
-        },
-      });
+          },
+        });
       }
     }
   }
