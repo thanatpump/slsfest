@@ -17,7 +17,8 @@ interface Booking {
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://vzesousztjhoymntujtq.supabase.co';
 function getSlipUrl(path: string) {
   if (!path) return '';
-  return `${SUPABASE_URL}/storage/v1/object/public/slsfest-slip/${path}`;
+  const cleanPath = path.replace(/^\/?/, '');
+  return `${SUPABASE_URL}/storage/v1/object/public/slsfest-slip/${cleanPath}`;
 }
 
 export default function AdminTable() {
