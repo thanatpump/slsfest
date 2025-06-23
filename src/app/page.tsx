@@ -130,7 +130,7 @@ export default function Home() {
                       <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 27 มิถุนายน 2568</p>
                       <div className="space-y-4">
                         <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,500 บาท</p>
+                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
                           <p className="text-sm text-gray-600 mb-2">โซน Indoor</p>
                           <ul className="text-gray-800 space-y-1">
                             <li className="flex items-center gap-2">
@@ -148,7 +148,7 @@ export default function Home() {
                           </ul>
                         </div>
                         <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,200 บาท</p>
+                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
                           <p className="text-sm text-gray-600 mb-2">โซน Outdoor</p>
                           <ul className="text-gray-800 space-y-1">
                             <li className="flex items-center gap-2">
@@ -165,23 +165,6 @@ export default function Home() {
                             </li>
                           </ul>
                         </div>
-                        <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">150 บาท</p>
-                          <ul className="text-gray-800 space-y-1">
-                            <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              บัตรสำหรับ 1 ท่าน
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              เบียร์ 1 กระป๋องใหญ่
-                            </li>
-                          </ul>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -194,7 +177,7 @@ export default function Home() {
                       <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 12 กรกฎาคม 2568</p>
                       <div className="space-y-4">
                         <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,200 บาท</p>
+                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
                           <p className="text-sm text-gray-600 mb-2">โซน Indoor</p>
                           <ul className="text-gray-800 space-y-1">
                         <li className="flex items-center gap-2">
@@ -259,7 +242,7 @@ export default function Home() {
                           </ul>
                         </div>
                         <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">800 บาท</p>
+                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
                           <p className="text-sm text-gray-600 mb-2">โซน Outdoor</p>
                           <ul className="text-gray-800 space-y-1">
                         <li className="flex items-center gap-2">
@@ -275,23 +258,6 @@ export default function Home() {
                           เบียร์สด 1 ทาวเวอร์
                         </li>
                           </ul>
-                        </div>
-                        <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">150 บาท</p>
-                          <ul className="text-gray-800 space-y-1">
-                            <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              บัตรสำหรับ 1 ท่าน
-                            </li>
-                        <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                              เบียร์ 1 กระป๋องใหญ่
-                        </li>
-                      </ul>
                         </div>
                       </div>
                     </div>

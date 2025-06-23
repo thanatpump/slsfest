@@ -3,9 +3,9 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const artists = [
-  { name: 'น้ำแข็ง ทิพวรรณ', price: { indoor: 1500, outdoor: 1200 } },
-  { name: 'เวียง นฤมล', price: { indoor: 1200, outdoor: 1000 } },
-  { name: 'วงไม้เลื้อย', price: { indoor: 1000, outdoor: 800 } },
+  { name: 'น้ำแข็ง ทิพวรรณ', price: { indoor: 1000, outdoor: 1000 } },
+  { name: 'เวียง นฤมล', price: { indoor: 1000, outdoor: 1000 } },
+  { name: 'วงไม้เลื้อย', price: { indoor: 1000, outdoor: 1000 } },
 ];
 
 const seatRows = [
