@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useCallback, Suspense } from 'react';
 import Image from 'next/image';
 import SeatMap from '@/components/SeatMap';
 import { Seat as SeatType } from '@/types/seat';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 // seatRows และ initialLayout ไม่จำเป็นต้องกำหนดเองแล้ว เพราะดึงจาก backend
 
@@ -41,13 +41,10 @@ function SeatContent() {
   const [slip, setSlip] = useState<File|null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const artist = searchParams.get('artist');
 
   const fetchSeats = useCallback(async () => {
-    if (!artist) return;
     try {
-      const res = await fetch(`/api/seats?artist=${encodeURIComponent(artist)}`);
+      const res = await fetch(`/api/seats?artist=${encodeURIComponent('วงไม้เลื้อย')}`);
       const data = await res.json();
       if (data.error) {
         setError(data.error);
@@ -70,15 +67,11 @@ function SeatContent() {
       setError("เกิดข้อผิดพลาดในการโหลดข้อมูลที่นั่ง");
       setLayout({ zones: [], rows: 0, seatsPerRow: 0, seats: [] });
     }
-  }, [artist]);
+  }, []);
 
   useEffect(() => {
-    if (!artist) {
-      router.replace('/select-artist');
-      return;
-    }
     fetchSeats();
-  }, [artist, fetchSeats, router]);
+  }, [fetchSeats]);
 
   const getAvailableSeats = () => {
     if (!layout.seats || !Array.isArray(layout.seats)) {
@@ -112,7 +105,7 @@ function SeatContent() {
       bookingFormData.append('phone', formData.phone);
       bookingFormData.append('email', formData.email);
       bookingFormData.append('seats', JSON.stringify(selectedSeats));
-      if (artist) bookingFormData.append('artist', artist);
+      bookingFormData.append('artist', 'วงไม้เลื้อย');
       if (slip) {
         bookingFormData.append('slip', slip);
       }
@@ -147,7 +140,7 @@ function SeatContent() {
     <main className="min-h-screen flex flex-col bg-gradient-to-b from-[#e6ffec] via-[#ffe6f7] to-[#e6ffec] text-black">
       <header className="w-full py-10 bg-[#ffe6f7] shadow-2xl mb-10 border-b-4 border-[#e75480]">
         <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-[#e75480] text-center drop-shadow-lg tracking-wide mb-2">ระบบจองตั๋วคอนเสิร์ต</h1>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-[#e75480] text-center drop-shadow-lg tracking-wide mb-2">จองโต๊ะวงไม้เลื้อย</h1>
           <p className="text-2xl text-[#43e97b] text-center mt-2 font-medium">เลือกที่นั่งและชำระเงินออนไลน์ได้ทันที</p>
         </div>
       </header>

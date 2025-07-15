@@ -24,7 +24,7 @@ export default function Home() {
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: "easeOut" as const
       }
     }
   };
@@ -66,10 +66,10 @@ export default function Home() {
               </div>
           <motion.div variants={itemVariants} className="relative z-10 flex justify-center w-full max-w-2xl mx-auto mt-8">
                 <Link 
-              href="/select-artist"
+              href="/seat?artist=วงไม้เลื้อย"
               className="inline-block w-auto bg-[#00b894] hover:bg-[#43e97b] text-white font-bold py-2 md:py-4 px-4 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg border-2 border-[#00c6fb]"
                 >
-                  จองตั๋ว
+                  จองโต๊ะวงไม้เลื้อย
                 </Link>
             </motion.div>
         </motion.div>
@@ -111,121 +111,26 @@ export default function Home() {
               <div className="flex flex-col md:flex-row items-start gap-4 md:gap-8">
                 <div className="flex-1">
                   <h3 className="text-lg md:text-2xl font-bold text-[#e75480] mb-2 md:mb-4">วันและเวลา</h3>
-                  <p className="text-base md:text-xl text-black">20 มิถุนายน - สิงหาคม</p>
+                  <p className="text-base md:text-xl text-black">16 สิงหาคม 2568</p>
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg md:text-2xl font-bold text-[#e75480] mb-2 md:mb-4">สถานที่</h3>
-                  <p className="text-base md:text-xl text-black">ลานตลาดวิถีชุมชนซับสะเลเต ก่อนถึง อุทยานแห่งชาติป่าหินงาม.</p>
+                  <p className="text-base md:text-xl text-black">ลานตลาดวิถีชุมชนซับสะเลเต ก่อนถึง อุทยานแห่งชาติป่าหินงาม</p>
                 </div>
               </div>
 
               <div className="border-t border-[#e75480]/30 pt-6 md:pt-8">
-                <h3 className="text-lg md:text-2xl font-bold text-[#e75480] mb-4 md:mb-6">ประเภทบัตรเข้าชมและค่าสมัคร</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                  {/* บัตร น้ำแข็ง ทิพวรรณ */}
+                <h3 className="text-lg md:text-2xl font-bold text-[#e75480] mb-4 md:mb-6">จองโต๊ะวงไม้เลื้อย</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  {/* โซน Indoor */}
                   <div className="bg-white p-3 md:p-6 rounded-xl shadow-lg border-2 border-[#e75480] relative overflow-hidden group flex flex-col h-full">
                     <div className="absolute inset-0 bg-gradient-to-br from-[#e75480]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="relative z-10 flex flex-col h-full">
-                      <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">บัตร น้ำแข็ง ทิพวรรณ</h4>
-                      <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 27 มิถุนายน 2568</p>
-                      <div className="space-y-4">
-                        <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
-                          <p className="text-sm text-gray-600 mb-2">โซน Indoor</p>
-                          <ul className="text-gray-800 space-y-1">
-                            <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              สำหรับ 4 ท่าน
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              เบียร์สด 1 ทาวเวอร์
-                            </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
-                          <p className="text-sm text-gray-600 mb-2">โซน Outdoor</p>
-                          <ul className="text-gray-800 space-y-1">
-                            <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              สำหรับ 4 ท่าน
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                              </svg>
-                              เบียร์สด 1 ทาวเวอร์
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* จอดโต๊ะ เวียง นฤมล */}
-                  <div className="bg-white p-3 md:p-6 rounded-xl shadow-lg border-2 border-[#e75480] relative overflow-hidden group flex flex-col h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#e75480]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="relative z-10 flex flex-col h-full">
-                      <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">จอดโต๊ะ เวียง นฤมล</h4>
-                      <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 12 กรกฎาคม 2568</p>
-                      <div className="space-y-4">
-                        <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
-                          <p className="text-sm text-gray-600 mb-2">โซน Indoor</p>
-                          <ul className="text-gray-800 space-y-1">
-                        <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                          สำหรับ 4 ท่าน
-                        </li>
-                        <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                          เบียร์สด 1 ทาวเวอร์
-                        </li>
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
-                          <p className="text-sm text-gray-600 mb-2">โซน Outdoor</p>
-                          <ul className="text-gray-800 space-y-1">
-                        <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                              สำหรับ 4 ท่าน
-                        </li>
-                        <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                              เบียร์สด 1 ทาวเวอร์
-                        </li>
-                      </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* บัตร วงไม้เลื้อย */}
-                  <div className="bg-white p-3 md:p-6 rounded-xl shadow-lg border-2 border-[#e75480] relative overflow-hidden group flex flex-col h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#e75480]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="relative z-10 flex flex-col h-full">
-                      <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">บัตร วงไม้เลื้อย</h4>
+                      <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">โซน Indoor</h4>
                       <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 16 สิงหาคม 2568</p>
                       <div className="space-y-4">
                         <div>
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
-                          <p className="text-sm text-gray-600 mb-2">โซน Indoor</p>
                           <ul className="text-gray-800 space-y-1">
                             <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,23 +144,45 @@ export default function Home() {
                               </svg>
                               เบียร์สด 1 ทาวเวอร์
                             </li>
+                            <li className="flex items-center gap-2">
+                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                              </svg>
+                              ที่นั่งในร่ม
+                            </li>
                           </ul>
                         </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* โซน Outdoor */}
+                  <div className="bg-white p-3 md:p-6 rounded-xl shadow-lg border-2 border-[#e75480] relative overflow-hidden group flex flex-col h-full">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#e75480]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="relative z-10 flex flex-col h-full">
+                      <h4 className="text-base md:text-xl font-bold text-black mb-1 md:mb-2">โซน Outdoor</h4>
+                      <p className="text-sm md:text-base text-[#00b894] font-semibold mb-3">วันที่ 16 สิงหาคม 2568</p>
+                      <div className="space-y-4">
                         <div>
                           <p className="text-xl md:text-2xl font-bold text-[#e75480] mb-2">1,000 บาท</p>
-                          <p className="text-sm text-gray-600 mb-2">โซน Outdoor</p>
                           <ul className="text-gray-800 space-y-1">
+                            <li className="flex items-center gap-2">
+                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                              </svg>
+                              สำหรับ 4 ท่าน
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                              </svg>
+                              เบียร์สด 1 ทาวเวอร์
+                            </li>
                         <li className="flex items-center gap-2">
                               <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                           </svg>
-                          สำหรับ 4 ท่าน
-                        </li>
-                        <li className="flex items-center gap-2">
-                              <svg className="w-4 h-4 text-[#e75480]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                          </svg>
-                          เบียร์สด 1 ทาวเวอร์
+                              ที่นั่งกลางแจ้ง
                         </li>
                           </ul>
                         </div>

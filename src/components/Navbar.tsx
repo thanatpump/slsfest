@@ -14,8 +14,8 @@ export default function Navbar() {
         <Link href="/">
             <span className="text-lg font-semibold text-black hover:text-[#00b894] hover:bg-white/30 transition-colors rounded-full px-4 py-2 cursor-pointer">หน้าแรก</span>
         </Link>
-        <Link href="/select-artist">
-            <span className="text-lg font-semibold text-black hover:text-[#00b894] hover:bg-white/30 transition-colors rounded-full px-4 py-2 cursor-pointer">จองที่นั่ง</span>
+        <Link href="/seat?artist=วงไม้เลื้อย">
+            <span className="text-lg font-semibold text-black hover:text-[#00b894] hover:bg-white/30 transition-colors rounded-full px-4 py-2 cursor-pointer">จองโต๊ะวงไม้เลื้อย</span>
         </Link>
         </div>
         {/* กลาง */}
@@ -63,8 +63,8 @@ export default function Navbar() {
           <Link href="/" onClick={() => setOpen(false)}>
             <span className="block text-base font-semibold text-black hover:text-[#00b894] hover:bg-white/30 transition-colors rounded-full px-4 py-2 cursor-pointer">หน้าแรก</span>
           </Link>
-          <Link href="/select-artist" onClick={() => setOpen(false)}>
-            <span className="block text-base font-semibold text-black hover:text-[#00b894] hover:bg-white/30 transition-colors rounded-full px-4 py-2 cursor-pointer">จองที่นั่ง</span>
+          <Link href="/seat?artist=วงไม้เลื้อย" onClick={() => setOpen(false)}>
+            <span className="block text-base font-semibold text-black hover:text-[#00b894] hover:bg-white/30 transition-colors rounded-full px-4 py-2 cursor-pointer">จองโต๊ะวงไม้เลื้อย</span>
           </Link>
           <Link href="/check-status" onClick={() => setOpen(false)}>
             <span className="block text-base font-semibold text-black hover:text-[#00b894] hover:bg-white/30 transition-colors rounded-full px-4 py-2 cursor-pointer">ตรวจสอบสถานะ</span>

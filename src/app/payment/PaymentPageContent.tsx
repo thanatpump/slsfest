@@ -55,6 +55,12 @@ export default function PaymentPageContent() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-white">
       <div className="bg-white/90 rounded-3xl shadow-2xl p-10 max-w-lg w-full border border-blue-100 mt-12">
+        <div className="mb-6">
+          <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 p-4 rounded-xl text-center text-base font-semibold">
+            กรุณาชำระเงินภายใน <span className='font-bold'>24 ชั่วโมง</span> หลังจากทำการจอง <br />
+            หากไม่ชำระเงินภายในเวลาที่กำหนด ระบบจะยกเลิกการจองโดยอัตโนมัติ
+          </div>
+        </div>
         <h1 className="text-3xl font-extrabold text-blue-700 text-center mb-4">ขั้นตอนชำระเงิน</h1>
         <p className="text-lg text-center mb-6">กรุณาชำระเงินตามรายละเอียดด้านล่าง และอัปโหลดสลิปในระบบ</p>
         <div className="bg-blue-50 rounded-xl p-6 mb-6 text-center">

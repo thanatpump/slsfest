@@ -28,6 +28,7 @@ model Booking {
   phone        String
   email        String
   createdAt    DateTime @default(now())
+  expiresAt    DateTime
   paymentSlip  String?  // path รูปสลิป
   status       String   @default("pending") // waiting_payment, pending, approved, rejected
   artist       String
