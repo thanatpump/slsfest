@@ -115,7 +115,7 @@ export default function AdminTable() {
               </tr>
             </thead>
             <tbody>
-              {bookings.map(b => (
+              {bookings && bookings.length > 0 ? bookings.map(b => (
                 <tr key={b.id} className="text-center bg-white shadow rounded-xl">
                   <td className="p-2 font-bold text-blue-700">{b.id}</td>
                   <td className="p-2">{b.seatId}</td>
@@ -170,7 +170,13 @@ export default function AdminTable() {
                     )}
                   </td>
                 </tr>
-              ))}
+              )) : (
+                <tr>
+                  <td colSpan={8} className="text-center py-4 text-gray-500">
+                    ไม่มีข้อมูลการจอง
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
