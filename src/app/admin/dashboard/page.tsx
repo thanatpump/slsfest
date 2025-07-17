@@ -49,6 +49,16 @@ export default async function DashboardPage() {
     }
   })
 
+  // ดึงข้อมูลการจองที่หมดเวลา
+  const expiredBookings = await prisma.booking.count({
+    where: {
+      status: 'waiting_payment',
+      expiresAt: {
+        lt: new Date()
+      }
+    }
+  })
+
   return (
     <main className="min-h-screen bg-gray-50 p-8">
       <h1 className="text-3xl font-bold text-orange-600 mb-10 text-center">Dashboard</h1>
@@ -151,6 +161,23 @@ export default async function DashboardPage() {
               </svg>
             </div>
           </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-lg p-6 border border-red-200 hover:shadow-xl transition-shadow cursor-pointer">
+          <a href="/admin/expired-bookings" className="block">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-500">การจองที่หมดเวลา</p>
+                <h3 className="text-2xl font-bold text-red-600">{expiredBookings}</h3>
+                <p className="text-xs text-red-500 mt-1">คลิกเพื่อรีเซ็ต</p>
+              </div>
+              <div className="bg-red-100 p-3 rounded-full">
+                <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
 

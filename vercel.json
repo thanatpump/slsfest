@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/reset-expired",
+      "schedule": "*/10 * * * *"
+    }
+  ]
+} 

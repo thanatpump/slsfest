@@ -11,7 +11,7 @@ export default function CountdownTimer() {
   });
 
   useEffect(() => {
-    const targetDate = new Date('2025-06-27T18:00:00+07:00');
+    const targetDate = new Date('2025-08-16T18:00:00+07:00');
 
     const calculateTimeLeft = () => {
       const difference = targetDate.getTime() - new Date().getTime();
