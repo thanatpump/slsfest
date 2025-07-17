@@ -71,7 +71,7 @@ export default function CronSettingsPage() {
           className="bg-white rounded-3xl shadow-2xl p-8 border-2 border-[#e75480]"
         >
           <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl font-bold text-[#e75480]">ตั้งค่าระบบรีเซ็ตอัตโนมัติ</h1>
+            <h1 className="text-3xl font-bold text-[#e75480]">ระบบรีเซ็ตอัตโนมัติ</h1>
           </div>
 
           {message && (
@@ -88,52 +88,29 @@ export default function CronSettingsPage() {
             </motion.div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            {/* การตั้งค่า Cron Job */}
-            <div className="bg-[#ffe6f7] rounded-xl p-6 border border-[#e75480]">
-              <h2 className="text-xl font-bold text-[#e75480] mb-4">การตั้งค่า Cron Job</h2>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-semibold text-[#e75480]">คำสั่ง Cron Job:</p>
-                  <code className="bg-gray-100 p-2 rounded text-sm block mt-1">
-                    */10 * * * * curl -X GET https://your-domain.com/api/cron/reset-expired
-                  </code>
-                </div>
-                <div>
-                  <p className="font-semibold text-[#e75480]">ความถี่:</p>
-                  <p className="text-gray-700">ทุก 10 นาที</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-[#e75480]">การทำงาน:</p>
-                  <p className="text-gray-700">ตรวจสอบและรีเซ็ตการจองที่เกิน 24 ชั่วโมง</p>
-                </div>
+          {/* สถานะปัจจุบัน */}
+          <div className="bg-[#e6ffec] rounded-xl p-6 border border-[#43e97b] mb-8">
+            <h2 className="text-xl font-bold text-[#43e97b] mb-4">สถานะปัจจุบัน</h2>
+            <div className="space-y-4">
+              <div>
+                <p className="font-semibold text-[#43e97b]">การทำงานล่าสุด:</p>
+                <p className="text-gray-700">{lastRun || 'ยังไม่มีการทำงาน'}</p>
               </div>
-            </div>
-
-            {/* สถานะปัจจุบัน */}
-            <div className="bg-[#e6ffec] rounded-xl p-6 border border-[#43e97b]">
-              <h2 className="text-xl font-bold text-[#43e97b] mb-4">สถานะปัจจุบัน</h2>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-semibold text-[#43e97b]">การทำงานล่าสุด:</p>
-                  <p className="text-gray-700">{lastRun || 'ยังไม่มีการทำงาน'}</p>
-                </div>
-                <div>
-                  <p className="font-semibold text-[#43e97b]">สถานะ:</p>
-                  <p className="text-gray-700">พร้อมใช้งาน</p>
-                </div>
-                <button
-                  onClick={testCronJob}
-                  disabled={isRunning}
-                  className={`w-full px-6 py-3 rounded-full font-bold transition-colors ${
-                    isRunning
-                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                      : 'bg-[#43e97b] hover:bg-green-400 text-white'
-                  }`}
-                >
-                  {isRunning ? 'กำลังทดสอบ...' : 'ทดสอบ Cron Job'}
-                </button>
+              <div>
+                <p className="font-semibold text-[#43e97b]">สถานะ:</p>
+                <p className="text-gray-700">พร้อมใช้งาน</p>
               </div>
+              <button
+                onClick={testCronJob}
+                disabled={isRunning}
+                className={`w-full px-6 py-3 rounded-full font-bold transition-colors ${
+                  isRunning
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    : 'bg-[#43e97b] hover:bg-green-400 text-white'
+                }`}
+              >
+                {isRunning ? 'กำลังทดสอบ...' : 'ทดสอบระบบรีเซ็ต'}
+              </button>
             </div>
           </div>
 
@@ -175,10 +152,10 @@ export default function CronSettingsPage() {
           <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <h3 className="font-bold text-blue-800 mb-2">คำแนะนำ:</h3>
             <ul className="text-blue-700 space-y-1 text-sm">
-              <li>• ตั้งค่า cron job ให้ทำงานทุก 10 นาที เพื่อรีเซ็ตการจองที่หมดเวลา</li>
+              <li>• ระบบจะรีเซ็ตการจองที่หมดเวลาอัตโนมัติทุกวันเวลาเที่ยงคืน</li>
               <li>• ระบบจะตรวจสอบ booking ที่ status = &quot;waiting_payment&quot; และหมดเวลา</li>
               <li>• เมื่อรีเซ็ต จะเปลี่ยนสถานะที่นั่งเป็น &quot;available&quot; และ booking เป็น &quot;expired&quot;</li>
-              <li>• สามารถทดสอบการทำงานได้ด้วยปุ่ม &quot;ทดสอบ Cron Job&quot;</li>
+              <li>• สามารถทดสอบการทำงานได้ด้วยปุ่ม &quot;ทดสอบระบบรีเซ็ต&quot;</li>
             </ul>
           </div>
         </motion.div>
