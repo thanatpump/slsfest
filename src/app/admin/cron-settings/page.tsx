@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface CronLog {
@@ -47,7 +47,7 @@ export default function CronSettingsPage() {
         };
         setLogs(prev => [newLog, ...prev.slice(0, 9)]);
       }
-    } catch (error) {
+    } catch {
       setMessage('❌ เกิดข้อผิดพลาดในการเชื่อมต่อ');
       
       const newLog: CronLog = {
@@ -176,9 +176,9 @@ export default function CronSettingsPage() {
             <h3 className="font-bold text-blue-800 mb-2">คำแนะนำ:</h3>
             <ul className="text-blue-700 space-y-1 text-sm">
               <li>• ตั้งค่า cron job ให้ทำงานทุก 10 นาที เพื่อรีเซ็ตการจองที่หมดเวลา</li>
-              <li>• ระบบจะตรวจสอบ booking ที่ status = "waiting_payment" และหมดเวลา</li>
-              <li>• เมื่อรีเซ็ต จะเปลี่ยนสถานะที่นั่งเป็น "available" และ booking เป็น "expired"</li>
-              <li>• สามารถทดสอบการทำงานได้ด้วยปุ่ม "ทดสอบ Cron Job"</li>
+              <li>• ระบบจะตรวจสอบ booking ที่ status = &quot;waiting_payment&quot; และหมดเวลา</li>
+              <li>• เมื่อรีเซ็ต จะเปลี่ยนสถานะที่นั่งเป็น &quot;available&quot; และ booking เป็น &quot;expired&quot;</li>
+              <li>• สามารถทดสอบการทำงานได้ด้วยปุ่ม &quot;ทดสอบ Cron Job&quot;</li>
             </ul>
           </div>
         </motion.div>

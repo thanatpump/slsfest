@@ -6,7 +6,6 @@ const prismaClientSingleton = () => {
 
 // ขยาย type ของ globalThis ให้รองรับ prisma
 declare global {
-  // eslint-disable-next-line no-var
   var prisma: ReturnType<typeof prismaClientSingleton> | undefined
 }
 
